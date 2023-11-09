@@ -1,0 +1,136 @@
+package com.lms.entity;
+import jakarta.persistence.*;
+
+@Entity
+public class User {
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//user id unique
+    private Long id;
+	
+	//user first name
+	@Column(name="userFirstName")
+    private String userFirstName;
+    
+	//user last name
+	@Column(name="userLastName")
+    private String userLastName;
+	
+	//user email
+	@Column(name="userEmail")
+    private String userEmail;
+	
+	//user phone number
+	@Column(name="userPhone")
+    private String userPhone;
+    
+	//user address
+	@Column(name="userAddress")
+    private String userAddress;
+	
+    public User() {
+    	
+    }
+
+	public User(String userFirstName, String userLastName, String userEmail, String userPhone, String userAddress) {
+		super();
+		this.userFirstName = userFirstName;
+		this.userLastName = userLastName;
+		this.userEmail = userEmail;
+		this.userPhone = userPhone;
+		this.userAddress = userAddress;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the userFirstName
+	 */
+	public String getUserFirstName() {
+		return userFirstName;
+	}
+
+	/**
+	 * @param userFirstName the userFirstName to set
+	 */
+	public void setUserFirstName(String userFirstName) {
+		this.userFirstName = userFirstName;
+	}
+
+	/**
+	 * @return the userLastName
+	 */
+	public String getUserLastName() {
+		return userLastName;
+	}
+
+	/**
+	 * @param userLastName the userLastName to set
+	 */
+	public void setUserLastName(String userLastName) {
+		this.userLastName = userLastName;
+	}
+
+	/**
+	 * @return the userEmail
+	 */
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	/**
+	 * @param userEmail the userEmail to set
+	 */
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+
+	/**
+	 * @return the userPhone
+	 */
+	public String getUserPhone() {
+		return userPhone;
+	}
+
+	/**
+	 * @param userPhone the userPhone to set
+	 */
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
+	}
+
+	/**
+	 * @return the userAddress
+	 */
+	public String getUserAddress() {
+		return userAddress;
+	}
+
+	/**
+	 * @param userAddress the userAddress to set
+	 */
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", userFirstName=" + userFirstName + ", userLastName=" + userLastName + ", userEmail="
+				+ userEmail + ", userPhone=" + userPhone + ", userAddress=" + userAddress + "]";
+	}
+
+	
+
+}

@@ -1,0 +1,119 @@
+package com.lms.entity;
+
+import jakarta.persistence.*;
+
+@Entity
+public class Book {
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	//Book id unique
+	private Long id;
+	
+	//Title of the book
+	@Column(name="titile")
+	private String title;
+	
+	//Author of the book
+	@Column(name="author")
+    private String author;
+	
+	//indicates whether the book is currently borrowed 
+	@Column(name="borrowed")
+    private boolean borrowed;
+	
+	//user who borrowed the book
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User borrowedBy;
+    
+    public Book() {
+    	
+    }
+
+	public Book(Long id, String title, String author, boolean borrowed, User borrowedBy) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.author = author;
+		this.borrowed = borrowed;
+		this.borrowedBy = borrowedBy;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
+
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	/**
+	 * @return the author
+	 */
+	public String getAuthor() {
+		return author;
+	}
+
+	/**
+	 * @param author the author to set
+	 */
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	/**
+	 * @return the borrowed
+	 */
+	public boolean isBorrowed() {
+		return borrowed;
+	}
+
+	/**
+	 * @param borrowed the borrowed to set
+	 */
+	public void setBorrowed(boolean borrowed) {
+		this.borrowed = borrowed;
+	}
+
+	/**
+	 * @return the borrowedBy
+	 */
+	public User getBorrowedBy() {
+		return borrowedBy;
+	}
+
+	/**
+	 * @param borrowedBy the borrowedBy to set
+	 */
+	public void setBorrowedBy(User borrowedBy) {
+		this.borrowedBy = borrowedBy;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", borrowed=" + borrowed + ", borrowedBy="
+				+ borrowedBy + "]";
+	}
+    
+    
+}

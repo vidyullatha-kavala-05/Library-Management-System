@@ -1,0 +1,44 @@
+package com.lms.controller;
+
+import com.lms.entity.*;
+import com.lms.service.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+	
+	@Autowired
+    private UserService userService;
+
+	//get all users
+    @GetMapping
+    public List<User> getAllUsers() {
+        return userService.findAll();
+    }
+
+    //add a new user
+    @PostMapping
+    public User addUser(@RequestBody User user) {
+        return userService.save(user);
+    }
+    
+    //update an existing user by id
+    @PutMapping("/{id}")
+    public User updateUser(@PathVariable Long id, @RequestBody User user) {
+        user.setId(id);
+    	return userService.save(user);
+    }
+    
+    //delete a user by id
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable Long id) {
+        userService.deleteById(id);
+    }
+
+}
+

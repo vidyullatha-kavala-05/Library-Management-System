@@ -1,0 +1,28 @@
+package com.lms.service;
+
+import com.lms.entity.*;
+import com.lms.repository.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class LibrarianService {
+	 @Autowired
+	    private LibrarianRepository librarianRepository;
+
+	    public List<Librarian> findAll() {
+	        return librarianRepository.findAll();
+	    }
+
+	    public Librarian save(Librarian librarian) {
+	        return librarianRepository.save(librarian);
+	    }
+	    
+	    public void deleteById(Long id) {
+	        librarianRepository.deleteById(id);
+	    }
+
+}
