@@ -1,0 +1,39 @@
+package com.lms.controller;
+
+import com.lms.entity.*;
+import com.lms.service.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/librarians")
+public class LibrarianController {
+	
+	@Autowired
+    private LibrarianService librarianService;
+
+	//get list of all librarians
+    @GetMapping
+    public List<Librarian> getAllLibrarians() {
+        return librarianService.findAll();
+    }
+
+    //add a new librarian
+    @PostMapping
+    public Librarian addLibrarian(@RequestBody Librarian librarian) {
+        return librarianService.save(librarian);
+    }
+    
+    public void deleteLibrarian(@PathVariable Long id) {
+        librarianService.deleteById(id);
+    }
+    
+
+
+}
+
+
